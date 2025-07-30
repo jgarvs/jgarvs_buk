@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: one
+  channel: one
+  is_activo: false
+
+two:
+  company: two
+  channel: two
+  is_activo: false
