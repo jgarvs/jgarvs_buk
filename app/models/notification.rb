@@ -1,3 +1,7 @@
+require_relative '../../lib/email_provider'
+require_relative '../../lib/sms_provider'
+require_relative '../../lib/whatsapp_provider'
+
 class Notification < ApplicationRecord
     def Process()
         # Read specific company configuration to decide if channel is available 

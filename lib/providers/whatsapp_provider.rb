@@ -1,5 +1,5 @@
 module WhatsappProvider
-        def try_send(notification_instance,  company_config)
+        def self.try_send(notification_instance,  company_config)
 
         is_email_active_for_company = company_config.get_whatsapp()
         if(!is_email_active_for_company)

@@ -1,5 +1,5 @@
 module EmailProvider
-    def try_send(notification_instance, company_config)
+    def self.try_send(notification_instance, company_config)
 
         #Get company configuration for emails
         
