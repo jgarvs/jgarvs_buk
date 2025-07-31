@@ -27,6 +27,12 @@ class AbstractNotification
         # Store notification data on DB
         self.notification_data.save
         # Store notification on Delay Job
+        priority = 100
+
+        if self.notification_data.urgent
+            priority = 1
+        end
+        NotificationQueueJob.set(priority: priority).perform_later(self.notification_data)
     end
 
     def setup_notification(sender, tittle, body, urgent, recipients)
@@ -59,15 +65,6 @@ class AbstractNotification
         
     def add_recipients( new_recipients )
         self.notification_data.concat(new_recipients)
-    end
-    
-    def Process()
-        company_config = canal_company_configuration[self.notification_data.company_configuration_reference]
-        Async do
-            EmailProvider.try_send(self.notification_data, company_config)
-            SmsProvider.try_send(self.notification_data, company_config)
-            WhatsappProvider.try_send(self.notification_data, company_config)
-        end
     end
 
     lock_methods!
