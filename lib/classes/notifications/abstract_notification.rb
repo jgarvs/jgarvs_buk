@@ -56,7 +56,7 @@ class AbstractNotification
     end
 
     def set_body(body)
-        self.notification_data.tittle = body
+        self.notification_data.body = body
     end
     
     def add_recipient( recipient )
